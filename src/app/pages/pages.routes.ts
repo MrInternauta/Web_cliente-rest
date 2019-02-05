@@ -6,11 +6,14 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { LoginGuardGuard } from '../services/service.index';
+import { ProfileComponent } from './profile/profile.component';
 
 const pageRute: Routes = [
     {
         path: '',
         component: PagesComponent,
+        canActivate: [LoginGuardGuard],
         children: [
             {path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'}},
             {path: 'progress', component: ProgressComponent, data: {titulo: 'Progress'}},
@@ -18,6 +21,7 @@ const pageRute: Routes = [
             {path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'}},
             {path: 'rxjs', component: RxjsComponent, data: {titulo: 'Rxjs'}},
             {path: 'acount-setting', component: AccountSettingsComponent, data: {titulo: 'Ajustes del tema'}},
+            {path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil de usuario'}},
             {path: '', redirectTo : '/dashboard', pathMatch: 'full'}
         ]
     }
