@@ -1,0 +1,84 @@
+<div class="row animated fadeIn" *ngIf="!subido">
+
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Participante</h4>
+                <h6 class="card-subtitle">Agregar participante nuevo</h6>
+                <form class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [(ngModel)]="nombre" name="nombre" type="text" class="form-control" i placeholder="Nombre" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Descripción</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [(ngModel)]="description" name="description" type="text" class="form-control" id="exampleInputEmail1" placeholder="Descripción" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Tipo de participante</label>
+                        <select class="form-control custom-select" data-placeholder="Choose a Category" [(ngModel)]="tipo" name="tipo" tabindex="1">
+                          <option value="Estudiante">Estudiante</option>
+                          <option value="Docente">Docente</option>
+                      </select>
+                    </div>
+
+                    <button type="submit" (click)="Guardar(nombre, description, tipo)" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"></i> Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="col-lg-5" *ngIf="subido">
+    <div class="card">
+        <div class="card-body" align="center">
+            <h4 class="card-title">Imagen del usuario</h4>
+            <h6 class="card-subtitle">Foto</h6>
+            <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+            <input (change)="selecionimagen($event.target.files[0] )" type="file" name="" id="">
+            <br><br>
+            <button type="button" (click)="cambiarimagen()" [disabled]="!ImagenSubir" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"></i> Actualizar foto</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row animated fadeIn">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Participante</h4>
+                <table id="example23" class="display nowrap table table-hover table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" style="width: 151px;">Nombre</th>
+                            <th class="sorting_desc" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" style="width: 226px;" aria-sort="descending">Tipo</th>
+                            <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" style="width: 111px;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let categoria of participantes">
+                        <tr role="row" class="odd">
+                            <td class="">{{categoria.name}}. {{categoria.description}}</td>
+                            <td class="sorting_1">{{categoria.role}}</td>
+                            <td class="text-nowrap">
+                                <a (click)="borrar(categoria)" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

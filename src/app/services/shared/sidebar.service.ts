@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,17 +7,29 @@ import { Injectable } from '@angular/core';
 export class SidebarService {
   menu: any = [
     {
-      titulo: 'Principal',
-      icono: 'mdi mdi-gauge',
+      titulo: 'Quien es más',
+      icono: 'mdi mdi-account-check',
       subMenu: [
-        {titulo: 'Dashboard', url: '/dashboard'},
-        {titulo: 'ProgressBar', url: '/progress'},
-        {titulo: 'Graficas', url: '/graficas1'},
-        {titulo: 'Promesas', url: '/promesas'},
-        {titulo: 'Rxjs', url: '/rxjs'},
+        {titulo: 'Quien es más', url: '/quien'},
+        {titulo: 'Resultados', url: '/graficas1'}
       ]
     }
   ];
 
-  constructor() { }
+  constructor(private _user: UsuarioService) {
+    if ( this._user.usuario.role === 'ADMIN_ROLE') {
+      this.menu = [
+        {
+          titulo: 'Quien es más',
+          icono: 'mdi mdi-account-check',
+          subMenu: [
+            {titulo: 'Quien es más', url: '/quien'},
+            {titulo: 'Resultados', url: '/graficas1'},
+            {titulo: 'Participantes', url: '/participante'},
+            {titulo: 'Categorias', url: '/categoria'}
+          ]
+        }
+      ];
+    }
+   }
 }

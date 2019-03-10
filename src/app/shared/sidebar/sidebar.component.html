@@ -12,16 +12,22 @@
                         <li><a routerLinkActive="active" routerLink="/profile">Mi pefil </a></li>
                         <!--<li><a href="javascript:void()">My Balance</a></li>
                         <li><a href="javascript:void()">Inbox</a></li>-->
-                        <li><a routerLinkActive="active" routerLink="/acount-setting">Account Setting</a></li>
-                        <li><a (click)="UsuarioSer.Logout()" class="pointer">Logout</a></li>
+                        <li><a routerLinkActive="active" routerLink="/acount-setting">Configuración</a></li>
+                        <li><a (click)="UsuarioSer.Logout()" class="pointer">Cerrar sesion</a></li>
                     </ul>
                 </li>
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">PERSONAL</li>
                 <li *ngFor="let menu of _sidebar.menu">
-                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i [class]="menu.icono"></i><span class="hide-menu">{{menu.titulo}} <span class="label label-rouded label-themecolor pull-right">{{menu.subMenu.length}}</span></span></a>
-                    <ul aria-expanded="false" class="collapse" *ngFor="let submenu of menu.subMenu">
-                        <li><a routerLinkActive="active" [routerLink]="[submenu.url]">{{submenu.titulo}} </a></li>
+                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i [class]="menu.icono"></i><span class="hide-menu">Quien es el/la más<span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <!--<ul aria-expanded="false" class="collapse" *ngFor="let submenu of menu.subMenu">
+                        <li><a routerLinkActive="active" [routerLink]="[submenu.url]">{{submenu.titulo}} </a></li>-->
+                        <li><a routerLinkActive="active" routerLink="/quien">Quien es más</a></li>
+                        <li><a routerLinkActive="active" routerLink="/graficas1">Resultados</a></li>
+                        <li><a routerLinkActive="active" routerLink="/participante">Participantes</a></li>
+                        <li><a routerLinkActive="active" routerLink="/categoria">Categorias</a></li>
+
                     </ul>
                 </li>
 

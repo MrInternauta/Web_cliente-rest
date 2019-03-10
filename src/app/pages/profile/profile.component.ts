@@ -9,7 +9,7 @@ import { Usuario } from '../../models/usuario.model';
 })
 export class ProfileComponent implements OnInit {
   usuario: any;
-  imagenTemp: string;
+  imagenTemp: any;
   ImagenSubir: File;
   constructor(public _usuario: UsuarioService) { }
 
@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
     this.usuario = this._usuario.usuario;
   }
   Guardar( f: any) {
-    
     this._usuario.usuario.name = f.nombre;
     this._usuario.usuario.lastname = f.apellido;
     this._usuario.ActualizarUsuario( {

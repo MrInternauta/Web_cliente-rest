@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { PipesModule } from '../pipes/pipes.module';
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { ParticipanteComponent } from './participante/participante.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,9 @@ import { CommonModule } from '@angular/common';
         AccountSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        ProfileComponent
+        ProfileComponent,
+        CategoriaComponent,
+        ParticipanteComponent,
     ],
     exports: [
         PagesComponent,
@@ -36,7 +40,9 @@ import { CommonModule } from '@angular/common';
         ProgressComponent,
         Graficas1Component,
         IncrementadorComponent,
-        GraficaDonaComponent
+        GraficaDonaComponent,
+        CategoriaComponent,
+        ParticipanteComponent,
     ],
     imports: [
         SharedModule,

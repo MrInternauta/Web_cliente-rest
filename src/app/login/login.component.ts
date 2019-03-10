@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       this._UsuarioService.LoginGoogle(token)
       .subscribe(() => {
         // this.router.navigate(['/dashboard']);
-        window.location.href = '#/dashboard';
+        window.location.href = '#/quien';
       } );
     } );
   }
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
     this._UsuarioService.Login(usuario, forma.value.recuerdame)
     .subscribe(ok => {
       // this.router.navigate(['/dashboard']);
-      window.location.href = '#/dashboard';
+      window.location.href = '#/quien';
     });
   }
 

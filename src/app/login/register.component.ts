@@ -40,14 +40,7 @@ export class RegisterComponent implements OnInit {
       termino: new FormControl(false),
     }, {validators: this.SonIguales('password', 'password2') }
     );
-    this.forma.setValue({
-      name: 'Felipe',
-      lastname: 'Ramirez',
-      email: 'email@email.com',
-      password: '123456',
-      password2: '123456',
-      termino: true,
-    });
+
   }
   RegistrarUsuario () {
       if (this.forma.invalid) {
@@ -75,7 +68,6 @@ export class RegisterComponent implements OnInit {
           (error) => {
             console.log(error);
           }  );
-      console.log(this.forma.value);
   }
 
 }

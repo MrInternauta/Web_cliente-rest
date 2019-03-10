@@ -23,11 +23,8 @@ export class ImagenPipe implements PipeTransform {
       case 'usuario':
       url += `usuarios/${ img }?token=${this._Usuario.token}`;
       break;
-      case 'medico':
-      url += `medicos/${ img }?token=${this._Usuario.token}`;
-      break;
-      case 'hospital':
-      url += `hospitales/${ img }?token=${this._Usuario.token}`;
+      case 'participante':
+      url += `participante/${ img }?token=${this._Usuario.token}`;
       break;
       default:
       console.log('Tipo de imagen no existe');

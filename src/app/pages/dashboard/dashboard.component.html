@@ -1,3 +1,74 @@
-<p>
-  dashboard works!
-</p>
+<div class="btn-group" data-toggle="buttons" role="group">
+    <label class="btn btn-outline btn-info" (click)="selecciona('e')">
+            <input type="radio" name="options" autocomplete="off" value="male" checked="">
+            <i class="ti-check text-active" aria-hidden="true"></i> Estudiante
+        </label>
+    <label class="btn btn-outline btn-info active" (click)="selecciona('d')">
+            <input type="radio" name="options" autocomplete="off" value="female">
+            <i class="ti-check text-active" aria-hidden="true"></i> Docente
+        </label>
+</div>
+<br><br>
+<div class="row el-element-overlay" *ngIf="!hay_cat">
+    <div class="col-md-12">
+        <h4 class="card-title">No existen mas categorias.</h4>
+        <h6 class="card-subtitle m-b-20 text-muted">Gracias por votar</h6>
+    </div>
+</div>
+
+<div *ngIf="ver === 'e'">
+    <div class="row el-element-overlay" *ngFor="let categoria of categoriasEstudiante">
+        <div class="col-md-12">
+            <h4 class="card-title">{{categoria.nombre}}</h4>
+            <h6 class="card-subtitle m-b-20 text-muted"> {{categoria.cuerpo}} </h6>
+        </div>
+        <div class="col-lg-3 col-md-6" *ngFor="let participante of participantesEstudiante">
+            <div class="card">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img [src]="participante.img | imagen: 'participante'" alt="user" />
+                        <div class="el-overlay">
+                            <ul class="el-info">
+                                <li style="cursor: pointer;"><a class="btn default btn-outline" (click)="votar(categoria, participante)"><i class="icon-like"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">{{participante.name}} </h3> <small>{{participante.description}}</small>
+                        <br/> </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div *ngIf="ver === 'd'">
+    <div class="row el-element-overlay" *ngFor="let categoria of categoriasDocente">
+        <div class="col-md-12">
+            <h4 class="card-title">{{categoria.nombre}}</h4>
+            <h6 class="card-subtitle m-b-20 text-muted"> {{categoria.cuerpo}} </h6>
+        </div>
+        <div class="col-lg-3 col-md-6" *ngFor="let participante of participantesDocente">
+            <div class="card">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img [src]="participante.img | imagen: 'participante'" alt="user" />
+                        <div class="el-overlay">
+                            <ul class="el-info">
+                                <li style="cursor: pointer;"><a class="btn default btn-outline" (click)="votar(categoria, participante)"><i class="icon-like"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">{{participante.name}} </h3> <small>{{participante.description}}</small>
+                        <br/> </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

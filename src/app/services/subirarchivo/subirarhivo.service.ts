@@ -8,7 +8,7 @@ export class SubirarhivoService {
 
   constructor() { }
   SubirArchivo( archivo: File, tipo: string, id: string ) {
-    return new Promise ( (resolve, reject) =>{
+    return new Promise ( (resolve, reject) => {
       const formData = new FormData();
       const xhr = new XMLHttpRequest();
       formData.append('archivo', archivo, archivo.name);

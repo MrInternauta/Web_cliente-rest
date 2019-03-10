@@ -16,13 +16,14 @@ export class UsuarioService {
   constructor(public http: HttpClient, public router: Router,
               public subirarchivo: SubirarhivoService) {
     this.CargarStorage();
+    console.log(environment.url);
   }
 
   CargarStorage () {
-    if(localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    }else{
+    } else {
       this.token = '';
       this.usuario = null;
     }
@@ -37,21 +38,20 @@ export class UsuarioService {
    }
 
    EstaLogueado () {
-    return (this.token.length > 5)? true: false;
-  } 
+    return (this.token.length > 5) ? true : false;
+  }
   Logout () {
     this.usuario = null;
     this.token = '';
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     localStorage.removeItem('id');
-    this.router.navigate(['/login']);
+    location.reload();
   }
    Login(usuario: Usuario, recordar = false ) {
      if (recordar) {
        localStorage.setItem('email', usuario.email);
-     }
-     else {
+     } else {
        localStorage.removeItem('email');
      }
     return this.http.post(environment.url + '/login', usuario)
@@ -72,6 +72,8 @@ export class UsuarioService {
     );
    }
    RegistrarUsuario (usuario: Usuario) {
+    console.log(environment.url);
+
       return this.http.post(environment.url + '/usuario/crear', usuario)
         .pipe(
           map( (data: any) => {
